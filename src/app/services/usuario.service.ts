@@ -16,8 +16,14 @@ export class UsuarioService {
   ) { }
   
 
-  getUset(): any{
-    return this.http.get<UsuariosInterface>(`${ this.url }/users?per_page=6`).pipe(
+  getUsers(): any{
+    return this.http.get<UsuariosInterface>(`${ this.url }/users?per_page=6&delay=3`).pipe(
+      map( (resp ) => resp.data )
+    );
+  }
+
+  getUserByid( id: string): any{
+    return this.http.get<UsuariosInterface>(`${ this.url }/users/${ id }`).pipe(
       map( (resp ) => resp.data )
     );
   }
